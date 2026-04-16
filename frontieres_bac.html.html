@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HGGSP – Les Frontières | Fiche de révision</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:wght@700;900&display=swap');
+
+    :root {
+      --bg: #0d0f1a;
+      --card: #151828;
+      --card2: #1a1e30;
+      --accent1: #6c63ff;
+      --accent2: #00d4aa;
+      --accent3: #ff6b6b;
+      --accent4: #ffd93d;
+      --text: #e8eaf6;
+      --muted: #8892b0;
+      --border: rgba(108,99,255,0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    header {
+      background: linear-gradient(135deg, #0d0f1a 0%, #1a1040 50%, #0d1a2a 100%);
+      padding: 80px 40px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(108,99,255,0.15) 0%, transparent 70%);
+    }
+    header .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff 30%, var(--accent1) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 14px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      padding: 24px 40px;
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      transition: all .2s;
+    }
+    nav a:hover { background: var(--accent1); color: #fff; border-color: var(--accent1); }
+
+    /* ── LAYOUT ── */
+    main { max-width: 1100px; margin: 0 auto; padding: 50px 24px 80px; }
+
+    /* ── SECTION TITLES ── */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 60px 0 28px;
+    }
+    .section-title .icon {
+      font-size: 1.8rem;
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+    .section-title p { color: var(--muted); font-size: .9rem; margin-top: 3px; }
+
+    /* ── CARDS GRID ── */
+    .grid { display: grid; gap: 18px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(108,99,255,.15); }
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .card p, .card li { color: var(--muted); font-size: .9rem; }
+    .card ul { list-style: none; padding: 0; }
+    .card ul li { padding: 4px 0; padding-left: 18px; position: relative; }
+    .card ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent1); font-size: .8rem; }
+
+    /* accent borders */
+    .card.purple { border-left: 3px solid var(--accent1); }
+    .card.green  { border-left: 3px solid var(--accent2); }
+    .card.red    { border-left: 3px solid var(--accent3); }
+    .card.yellow { border-left: 3px solid var(--accent4); }
+
+    /* ── QUOTE ── */
+    .quote {
+      background: linear-gradient(135deg, rgba(108,99,255,.1), rgba(0,212,170,.05));
+      border: 1px solid rgba(108,99,255,.3);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin: 18px 0;
+      position: relative;
+    }
+    .quote::before { content: '❝'; font-size: 2rem; color: var(--accent1); line-height: 1; }
+    .quote p { font-style: italic; color: #ccd6f6; font-size: .95rem; margin-top: 8px; }
+    .quote footer { color: var(--muted); font-size: .8rem; margin-top: 10px; font-weight: 600; }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 8px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent1), var(--accent2));
+    }
+    .tl-item { position: relative; margin-bottom: 20px; }
+    .tl-item::before {
+      content: '';
+      position: absolute; left: -24px; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent1);
+      box-shadow: 0 0 8px var(--accent1);
+    }
+    .tl-year {
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .tl-text { color: var(--muted); font-size: .88rem; }
+
+    /* ── KEY TERMS ── */
+    .terms-grid { display: flex; flex-wrap: wrap; gap: 12px; }
+    .term {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      flex: 1 1 200px;
+    }
+    .term strong { color: var(--accent2); font-size: .85rem; display: block; margin-bottom: 5px; }
+    .term span { color: var(--muted); font-size: .82rem; }
+
+    /* ── TABLE ── */
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+    th {
+      background: rgba(108,99,255,.2);
+      color: var(--accent1);
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: 12px 16px;
+      text-align: left;
+    }
+    td {
+      padding: 11px 16px;
+      color: var(--muted);
+      font-size: .88rem;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    tr:hover td { background: rgba(108,99,255,.05); }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight {
+      background: linear-gradient(135deg, rgba(255,107,107,.08), rgba(255,217,61,.05));
+      border: 1px solid rgba(255,107,107,.25);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+    .highlight h4 { color: var(--accent3); font-size: .9rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .06em; }
+    .highlight p, .highlight li { color: #ccd6f6; font-size: .88rem; }
+    .highlight ul { padding-left: 18px; }
+
+    /* ── PIÈGE BOX ── */
+    .piege {
+      background: rgba(255,217,61,.05);
+      border: 1px solid rgba(255,217,61,.3);
+      border-radius: 12px;
+      padding: 18px 22px;
+      margin: 14px 0;
+    }
+    .piege h4 { color: var(--accent4); font-size: .85rem; margin-bottom: 6px; }
+    .piege p { color: var(--muted); font-size: .87rem; }
+
+    /* ── STATS BAR ── */
+    .stat-row { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0; }
+    .stat {
+      background: var(--card2);
+      border-radius: 12px;
+      padding: 18px 22px;
+      text-align: center;
+      flex: 1 1 140px;
+      border: 1px solid var(--border);
+    }
+    .stat .val { font-size: 1.6rem; font-weight: 900; color: var(--accent2); }
+    .stat .lbl { font-size: .75rem; color: var(--muted); margin-top: 4px; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      font-size: .82rem;
+      border-top: 1px solid var(--border);
+    }
+    footer strong { color: var(--accent1); }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent1); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">HGGSP – Terminale · BAC 2026</div>
+  <h1>Les Frontières dans le Monde</h1>
+  <p>Fiche de révision complète · Notions, processus, études de cas & citations d'auteurs</p>
+</header>
+
+<nav>
+  <a href="#notions">🔑 Notions clés</a>
+  <a href="#processus">🌍 3 Processus</a>
+  <a href="#ue">🇪🇺 Frontières UE</a>
+  <a href="#tracer">✏️ Tracer</a>
+  <a href="#debat">⚖️ En débat</a>
+  <a href="#auteurs">💬 Auteurs</a>
+  <a href="#methode">📝 Méthode</a>
+</nav>
+
+<main>
+
+  <!-- ══════════════════════════════
+       I. NOTIONS CLÉS
+  ══════════════════════════════ -->
+  <div class="section-title" id="notions">
+    <div class="icon" style="background:linear-gradient(135deg,#6c63ff,#a78bfa)">🔑</div>
+    <div>
+      <h2>I. Notions & Définitions fondamentales</h2>
+      <p>Les bases indispensables pour tout devoir</p>
+    </div>
+  </div>
+
+  <div class="terms-grid">
+    <div class="term">
+      <strong>Frontière</strong>
+      <span>Du latin <em>frons</em> (« front d'armée », 1213). Limite du territoire d'un État et de sa compétence territoriale. Marqueur symbolique de souveraineté.</span>
+    </div>
+    <div class="term">
+      <strong>État</strong>
+      <span>Population + régime politique exerçant sa souveraineté sur un territoire délimité par des frontières.</span>
+    </div>
+    <div class="term">
+      <strong>Barrière</strong>
+      <span>Effet de séparation et de protection produit par une frontière vis-à-vis de l'extérieur.</span>
+    </div>
+    <div class="term">
+      <strong>Interface</strong>
+      <span>Zone de contact entre deux espaces de natures différentes, générant des échanges.</span>
+    </div>
+    <div class="term">
+      <strong>Frontiérisation</strong>
+      <span>Processus d'instauration ou de multiplication des frontières dans le monde.</span>
+    </div>
+    <div class="term">
+      <strong>Barriérisation</strong>
+      <span>Renforcement des frontières via des dispositifs matériels (murs, barbelés, drones…) pour en limiter le franchissement.</span>
+    </div>
+    <div class="term">
+      <strong>Refrontiérisation</strong>
+      <span>Dynamique de réaffirmation des frontières (internes et externes) après une période d'ouverture.</span>
+    </div>
+    <div class="term">
+      <strong>ZEE</strong>
+      <span>Zone Économique Exclusive (200 milles nautiques = 370 km). L'État y détient des droits souverains sur les ressources.</span>
+    </div>
+    <div class="term">
+      <strong>Smart border</strong>
+      <span>« Frontière intelligente » : zone équipée en haute technologie et mégadonnées pour contrôler les flux.</span>
+    </div>
+    <div class="term">
+      <strong>Région transfrontalière</strong>
+      <span>Espace de vie et d'échanges dépassant la frontière (ex : Mexamérique, franco-suisse).</span>
+    </div>
+  </div>
+
+  <div class="quote">
+    <p>« Les frontières sont du temps inscrit dans l'espace, ou mieux, des temps successifs créant des limites propres. »</p>
+    <footer>— Michel Foucher, <em>Les Frontières</em>, Documentation photographique n°8133, 2020</footer>
+  </div>
+
+  <!-- ══════════════════════════════
+       II. 3 PROCESSUS
+  ══════════════════════════════ -->
+  <div class="section-title" id="processus">
+    <div class="icon" style="background:linear-gradient(135deg,#00d4aa,#00b4d8)">🌍</div>
+    <div>
+      <h2>II. Les 3 grands processus depuis le XIX<sup>e</sup> s.</h2>
+      <p>À connaître absolument — structure du cours introductif</p>
+    </div>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="card purple">
+      <h3>A – De plus en plus nombreuses</h3>
+      <ul>
+        <li>Démantèlement des empires (1918 : austro-hongrois, ottoman, russe, allemand)</li>
+        <li>Décolonisation 1945–1975 → nouveaux États africains et asiatiques</li>
+        <li>Chute de l'URSS 1990–1991 → nouvelles frontières en Europe de l'Est</li>
+        <li>Ex-Yougoslavie, Timor oriental, Soudan du Sud (années 1990–2010)</li>
+      </ul>
+    </div>
+    <div class="card green">
+      <h3>B – Plus ou moins marquées</h3>
+      <ul>
+        <li><strong>Effacement</strong> : mondialisation, UE, Schengen, révolutions des transports</li>
+        <li><strong>Réaffirmation</strong> : protectionnisme (USA/Chine), murs (USA/Mexique, Israël/Cisjordanie)</li>
+        <li>Smart borders dans les pays développés</li>
+        <li>Montée des nationalismes → repli sur soi</li>
+      </ul>
+    </div>
+    <div class="card red">
+      <h3>C – Espaces transfrontaliers</h3>
+      <ul>
+        <li>La frontière devient un <em>espace</em>, plus seulement une ligne</li>
+        <li>Différentiels de salaires → flux de travailleurs frontaliers</li>
+        <li>France : 364 000 frontaliers (2015), dont 1/2 vers la Suisse</li>
+        <li>Malaisie–Singapour : 400 000 travailleurs/jour</li>
+        <li>Mexamérique (États-Unis méridionaux ↔ Mexique)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat"><div class="val">261 000 km</div><div class="lbl">de frontières terrestres mondiales</div></div>
+    <div class="stat"><div class="val">197</div><div class="lbl">États souverains</div></div>
+    <div class="stat"><div class="val">10 %</div><div class="lbl">des États ont moins de 25 ans</div></div>
+    <div class="stat"><div class="val">29 000 km</div><div class="lbl">de nouvelles frontières depuis 1991</div></div>
+  </div>
+
+  <!-- ══════════════════════════════
+       III. FRONTIÈRES UE
+  ══════════════════════════════ -->
+  <div class="section-title" id="ue">
+    <div class="icon" style="background:linear-gradient(135deg,#ffd93d,#ff6b6b)">🇪🇺</div>
+    <div>
+      <h2>III. Les frontières internes et externes de l'UE</h2>
+      <p>Construction européenne, Schengen, crises migratoires, cas hongrois</p>
+    </div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card yellow">
+      <h3>Construction de l'UE — Chronologie</h3>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-year">1951</div><div class="tl-text">CECA (France, RFA, Italie, Benelux) — charbon & acier</div></div>
+        <div class="tl-item"><div class="tl-year">1957</div><div class="tl-text">Traité de Rome → CEE à 6 États</div></div>
+        <div class="tl-item"><div class="tl-year">1962</div><div class="tl-text">PAC (Politique agricole commune)</div></div>
+        <div class="tl-item"><div class="tl-year">1985–1995</div><div class="tl-text">Accords de Schengen → fin des contrôles aux frontières internes</div></div>
+        <div class="tl-item"><div class="tl-year">1993</div><div class="tl-text">Marché unique + création officielle de l'UE</div></div>
+        <div class="tl-item"><div class="tl-year">1993</div><div class="tl-text">Critères de Copenhague (démocratie, économie de marché, respect du droit)</div></div>
+        <div class="tl-item"><div class="tl-year">2002</div><div class="tl-text">Introduction de l'euro (zone euro)</div></div>
+        <div class="tl-item"><div class="tl-year">2004–2013</div><div class="tl-text">Élargissement à l'Est (+16 États en < 20 ans)</div></div>
+        <div class="tl-item"><div class="tl-year">2020</div><div class="tl-text">Brexit → Royaume-Uni quitte l'UE</div></div>
+      </div>
+    </div>
+    <div class="card purple">
+      <h3>L'UE à géométrie variable</h3>
+      <table>
+        <tr><th>Périmètre</th><th>États</th></tr>
+        <tr><td>Union européenne</td><td>27 États</td></tr>
+        <tr><td>Espace Schengen</td><td>22 UE + 4 non-UE (Islande, Norvège, Liechtenstein, Suisse)</td></tr>
+        <tr><td>Zone euro (€)</td><td>19 États</td></tr>
+      </table>
+      <div class="quote" style="margin-top:14px">
+        <p>« L'Europe ne se définit pas comme une géographie préexistante… mais comme un processus historique inscrit dans un espace à géographie variable. »</p>
+        <footer>— Michel Foucher, <em>La République européenne</em>, 1998</footer>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card green">
+      <h3>Ouverture & intégration transfrontalière (frontières internes)</h3>
+      <ul>
+        <li>Libre circulation des marchandises, capitaux, services, personnes</li>
+        <li>Espace Schengen → suppression des postes-frontières</li>
+        <li>Travailleurs frontaliers × 3 entre 1999 (580 000) et 2015 (2 millions)</li>
+        <li>Eurorégions (GECT) + programme Interreg (7 Mds € / 2014–2020)</li>
+        <li>Erasmus (1987) : 48 États, 10 M bénéficiaires entre 1987 et 2020</li>
+        <li>Euro → facilitation des échanges transfrontaliers (2002)</li>
+      </ul>
+    </div>
+    <div class="card red">
+      <h3>Contrôle croissant aux frontières (frontières externes)</h3>
+      <ul>
+        <li><strong>Frontex</strong> (2004, siège à Varsovie) : 1 500 gardes-frontières, surveille les frontières extérieures de l'UE</li>
+        <li>Crise migratoire 2013–2015 : Groupe de Visegrád (Hongrie, Pologne, Tchéquie, Slovaquie) s'oppose aux quotas</li>
+        <li>Menaces terroristes depuis 2015</li>
+        <li>Covid-19 → fermetures de frontières 2020</li>
+        <li>Processus de <em>barriérisation</em> et <em>refrontiérisation</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:18px;">
+    <h3>🇭🇺 Étude de cas : la Hongrie — Quadruple analyse</h3>
+    <div class="grid grid-2" style="margin-top:14px">
+      <div class="highlight">
+        <h4>1. Géographique</h4>
+        <p>Hongrie = centre de l'Europe mais périphérie de l'UE, à l'interface avec les Balkans (route des migrants).</p>
+      </div>
+      <div class="highlight">
+        <h4>2. Historique</h4>
+        <p>Passé conflictuel avec l'Empire ottoman (bataille de Mohacs 1526). Traité du Trianon (1920) : territoire réduit de 283 000 → 93 000 km² (−71 %). Traumatisme durable.</p>
+      </div>
+      <div class="highlight">
+        <h4>3. Géopolitique</h4>
+        <p>Guerres Syrie/Irak/Afghanistan → flux migratoires. Mur de 175 km avec la Serbie (2015), renforcé en 2017 (caméras thermiques, miradors). 83 % des Hongrois perçoivent négativement l'immigration (2017).</p>
+      </div>
+      <div class="highlight">
+        <h4>4. Sciences politiques</h4>
+        <p>Viktor Orbán → « État illibéral » : dérive antilibérale, justice sous contrôle, médias rachetés par le parti (78 % du CA médias = proches Fidesz). Culture xénophobe et conservatrice.</p>
+      </div>
+    </div>
+    <div class="timeline" style="margin-top:18px">
+      <div class="tl-item"><div class="tl-year">Mai 1989</div><div class="tl-text">La Hongrie démantèle le rideau de fer avec l'Autriche → des milliers d'Allemands de l'Est fuient vers l'Ouest</div></div>
+      <div class="tl-item"><div class="tl-year">2004</div><div class="tl-text">Intégration à l'UE</div></div>
+      <div class="tl-item"><div class="tl-year">2015</div><div class="tl-text">Construction d'une clôture de barbelés de 175 km avec la Serbie</div></div>
+      <div class="tl-item"><div class="tl-year">2017</div><div class="tl-text">Doublement de la clôture (smartborder) : miradors, drones, détecteurs de mouvement</div></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       IV. TRACER DES FRONTIÈRES
+  ══════════════════════════════ -->
+  <div class="section-title" id="tracer">
+    <div class="icon" style="background:linear-gradient(135deg,#ff6b6b,#ff8e53)">✏️</div>
+    <div>
+      <h2>IV. Tracer des frontières — Approche géopolitique</h2>
+      <p>Le limes romain · La conférence de Berlin · Les deux Corées</p>
+    </div>
+  </div>
+
+  <div class="grid grid-3">
+    <div class="card purple">
+      <h3>🏛 Le limes romain (I<sup>er</sup> s. av. J.-C. → 260 ap. J.-C.)</h3>
+      <ul>
+        <li>Frontière de l'Empire romain contre les Barbares</li>
+        <li>Pas une ligne : une <strong>zone de défense discontinue</strong> (2-3 km de largeur)</li>
+        <li>Palissades → pierres + places fortifiées + légions</li>
+        <li>Au III<sup>e</sup> s. : 11 000 km de frontière impériale, dont ~550 km de limes</li>
+        <li>Aussi une zone d'échanges et de contact</li>
+        <li>Finit par céder → accélère la chute de l'Empire (III<sup>e</sup> s.)</li>
+      </ul>
+    </div>
+    <div class="card green">
+      <h3>🌍 Conférence de Berlin (1884–1885)</h3>
+      <ul>
+        <li>14 États (12 européens + Empire ottoman + USA)</li>
+        <li>Organisée par Bismarck → règles du partage de l'Afrique</li>
+        <li><strong>70 % des frontières africaines tracées en 25 ans</strong></li>
+        <li>Tracé depuis l'Europe sur des cartes imprécises, sans connaître le terrain</li>
+        <li>42 % lignes astronomiques, 34 % cours d'eau, 13 % relief</li>
+        <li>60 % tracées par la France (32 %) et le RU (26,8 %)</li>
+        <li>Seuls Liberia et Éthiopie restent indépendants en 1914</li>
+      </ul>
+      <div class="piege"><h4>⚠️ Piège classique</h4><p>La conférence de Berlin <strong>n'est pas</strong> le partage direct de l'Afrique : elle fixe les <em>règles</em> du partage futur.</p></div>
+    </div>
+    <div class="card red">
+      <h3>🇰🇷 Frontière des deux Corées</h3>
+      <ul>
+        <li>Corée annexée par le Japon (1910) ; libérée et partagée en 1945 (38<sup>e</sup> parallèle)</li>
+        <li>Guerre de Corée 1950–1953 → armistice de Panmunjeom</li>
+        <li><strong>MDL</strong> : ligne de démarcation (248 km)</li>
+        <li><strong>DMZ</strong> : zone démilitarisée de 4 km (1 million de mines)</li>
+        <li>700 000 soldats Nord / 410 000 soldats Sud + USA</li>
+        <li>JSA Panmunjeom : seul point de passage (sous ONU)</li>
+        <li>Tentatives de rapprochement (JO d'hiver 2018, sommets 2018–2019)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       V. FRONTIÈRES EN DÉBAT
+  ══════════════════════════════ -->
+  <div class="section-title" id="debat">
+    <div class="icon" style="background:linear-gradient(135deg,#a78bfa,#6c63ff)">⚖️</div>
+    <div>
+      <h2>V. Les frontières en débat</h2>
+      <p>Frontière germano-polonaise · Droit de la mer (ZEE) · Puissance maritime</p>
+    </div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card yellow">
+      <h3>🇩🇪🇵🇱 Frontière germano-polonaise (1939–1990)</h3>
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-year">1919</div><div class="tl-text">Traité de Versailles → couloir de Dantzig, source de tensions</div></div>
+        <div class="tl-item"><div class="tl-year">1939</div><div class="tl-text">Pacte germano-soviétique → partage secret de la Pologne. 1er sept. : invasion nazie ; 17 sept. : invasion soviétique</div></div>
+        <div class="tl-item"><div class="tl-year">1945</div><div class="tl-text">Conférence de Potsdam → ligne Oder-Neisse (déplacée de 200 km vers l'Ouest). ~7 millions d'Allemands expulsés</div></div>
+        <div class="tl-item"><div class="tl-year">1950</div><div class="tl-text">Accord de Görlitz : RDA reconnaît la frontière</div></div>
+        <div class="tl-item"><div class="tl-year">1969–1970</div><div class="tl-text">Ostpolitik de Willy Brandt (Nobel de la paix 1971) → RFA reconnaît la ligne Oder-Neisse</div></div>
+        <div class="tl-item"><div class="tl-year">1990</div><div class="tl-text">Traité « 4+2 » de Moscou + réunification → reconnaissance définitive par l'Allemagne unifiée</div></div>
+        <div class="tl-item"><div class="tl-year">1991</div><div class="tl-text">Traité de bon-voisinage germano-polonais</div></div>
+      </div>
+      <div class="quote" style="margin-top:14px">
+        <p>Selon Raymond Aron : la fixation des frontières oscille entre le <strong>diplomate</strong> (négociations) et le <strong>soldat</strong> (rapport de force).</p>
+        <footer>— Raymond Aron, <em>Paix et guerre entre les nations</em>, 1962</footer>
+      </div>
+    </div>
+
+    <div class="card green">
+      <h3>🌊 Le droit de la mer — Convention de Montego Bay (1982)</h3>
+      <table>
+        <tr><th>Zone</th><th>Distance</th><th>Souveraineté</th></tr>
+        <tr><td>Eaux intérieures</td><td>—</td><td>Pleine</td></tr>
+        <tr><td>Eaux territoriales</td><td>12 milles (22 km)</td><td>Oui</td></tr>
+        <tr><td>Zone contiguë</td><td>24 milles</td><td>Oui</td></tr>
+        <tr><td><strong>ZEE</strong></td><td><strong>200 milles (370 km)</strong></td><td>Droits souverains sur les ressources</td></tr>
+        <tr><td>Haute mer</td><td>Au-delà de 200 milles</td><td>Aucune — liberté totale</td></tr>
+      </table>
+      <div class="highlight" style="margin-top:14px">
+        <h4>Chiffres clés</h4>
+        <ul>
+          <li>ZEE = 32 % des espaces maritimes, 90 % des poissons pêchés</li>
+          <li>90 % des échanges mondiaux par voie maritime</li>
+          <li>99 % des flux Internet par câbles sous-marins</li>
+          <li>25 ports polarisent 50 % des flux mondiaux</li>
+        </ul>
+      </div>
+      <h3 style="margin-top:16px">Les plus grandes ZEE</h3>
+      <table>
+        <tr><th>État</th><th>Surface ZEE</th></tr>
+        <tr><td>🇺🇸 États-Unis</td><td>12,2 M km²</td></tr>
+        <tr><td>🇫🇷 France (grâce aux DROM-COM)</td><td>10,1 M km²</td></tr>
+        <tr><td>🇦🇺 Australie</td><td>9 M km²</td></tr>
+        <tr><td>🇷🇺 Russie</td><td>7,7 M km²</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       VI. CITATIONS D'AUTEURS
+  ══════════════════════════════ -->
+  <div class="section-title" id="auteurs">
+    <div class="icon" style="background:linear-gradient(135deg,#00d4aa,#6c63ff)">💬</div>
+    <div>
+      <h2>VI. Citations & auteurs incontournables</h2>
+      <p>À mobiliser dans les copies pour montrer sa maîtrise des références</p>
+    </div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="quote">
+      <p>« Rétablir la visibilité des frontières colmate l'anxiété culturelle, parfois fantasmée, face aux bruits et aux fureurs du monde. »</p>
+      <footer>— Michel Foucher, <em>Le Retour des frontières</em>, CNRS Éd., 2016</footer>
+    </div>
+    <div class="quote">
+      <p>« Les frontières sont du temps inscrit dans l'espace. »</p>
+      <footer>— Michel Foucher, <em>Documentation photographique</em>, n°8133, 2020</footer>
+    </div>
+    <div class="quote">
+      <p>« Pour la première fois dans l'histoire, le continent est uni dans sa totalité. »</p>
+      <footer>— Ralf Dahrendorf (1929–2009), sociologue germano-britannique</footer>
+    </div>
+    <div class="quote">
+      <p>« La construction européenne s'est réalisée selon un processus évolutif auto-entretenu sans se préoccuper de ses limites géographiques ultimes. »</p>
+      <footer>— Michel Foucher, <em>La République européenne</em>, Belin, 1998</footer>
+    </div>
+    <div class="quote">
+      <p>« La mer est un lieu de relations, la terre un lieu d'obstacles. » (ou : « La mer rapproche, la terre sépare. »)</p>
+      <footer>— Michel Serres (1930–2019), philosophe</footer>
+    </div>
+    <div class="quote">
+      <p>« Les États sont pris entre deux tensions contradictoires : se protéger et se projeter. […] La frontière maritime, rempart naturel, est aussi floue et perméable. »</p>
+      <footer>— Antoine Frémont, <em>Documentation photographique</em>, n°8104, 2015</footer>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       VII. MÉTHODE BAC
+  ══════════════════════════════ -->
+  <div class="section-title" id="methode">
+    <div class="icon" style="background:linear-gradient(135deg,#ffd93d,#ff6b6b)">📝</div>
+    <div>
+      <h2>VII. Méthode & Problématiques types</h2>
+      <p>Pour décrocher le 20/20</p>
+    </div>
+  </div>
+
+  <div class="grid grid-2">
+    <div class="card purple">
+      <h3>Problématiques types au bac</h3>
+      <ul>
+        <li>Quelles sont les formes et les fonctions des frontières dans le monde ?</li>
+        <li>Dans quelle mesure les frontières sont-elles à la fois barrières et interfaces ?</li>
+        <li>Comment les crises (migratoires, sanitaires) remettent-elles en cause l'espace européen ?</li>
+        <li>Pourquoi les espaces maritimes constituent-ils des enjeux géopolitiques majeurs ?</li>
+        <li>En quoi le tracé des frontières est-il le reflet de rapports de force ?</li>
+      </ul>
+    </div>
+    <div class="card green">
+      <h3>Plan type — Dissertation</h3>
+      <ul>
+        <li><strong>I.</strong> La frontière comme barrière : protection et affirmation de la souveraineté</li>
+        <li><strong>II.</strong> La frontière comme interface : ouverture, échanges, intégration</li>
+        <li><strong>III.</strong> La frontière remise en cause et redessinée : mondialisation vs repli</li>
+      </ul>
+    </div>
+    <div class="card yellow">
+      <h3>Vocabulaire à placer impérativement</h3>
+      <ul>
+        <li>Frontiérisation / barriérisation / refrontiérisation</li>
+        <li>Interface / barrière / espace transfrontalier</li>
+        <li>Souveraineté / ordre féodal → ordre étatique</li>
+        <li>ZEE / Convention de Montego Bay / haute mer</li>
+        <li>Ostpolitik / ligne Oder-Neisse / DMZ / JSA</li>
+        <li>Espace Schengen / Frontex / smart borders</li>
+        <li>État illibéral / groupe de Visegrád</li>
+      </ul>
+    </div>
+    <div class="card red">
+      <h3>Études de cas à mobiliser</h3>
+      <ul>
+        <li>🇪🇺 Espace Schengen → ouverture des frontières internes de l'UE</li>
+        <li>🇭🇺 Hongrie → fermeture, refrontiérisation, identité culturelle</li>
+        <li>🇩🇪🇵🇱 Frontière germano-polonaise → débat, rapport de force</li>
+        <li>🌍 Conférence de Berlin → colonisation et tracé arbitraire</li>
+        <li>🇰🇷 Deux Corées → frontière idéologique et militarisée</li>
+        <li>🌊 Convention de Montego Bay → ZEE et droit de la mer</li>
+        <li>🏛 Limes romain → zone, pas une ligne</li>
+        <li>🇲🇽 Mexamérique → région transfrontalière</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="piege" style="margin-top: 24px">
+    <h4>⚠️ Pièges classiques à éviter</h4>
+    <p>
+      1. Ne pas confondre la <strong>conférence de Berlin</strong> (cadre du partage) et le <strong>partage effectif</strong> de l'Afrique. <br>
+      2. L'UE n'a <strong>pas de frontières extérieures propres</strong> : ce sont celles de ses États membres. <br>
+      3. La <strong>DMZ</strong> entre les Corées n'est <strong>pas</strong> réellement démilitarisée (présence massive de soldats des deux côtés). <br>
+      4. Les frontières africaines <strong>n'ont pas</strong> été tracées sans tenir compte du terrain (42 % suivent des lignes astronomiques, 34 % des cours d'eau, 13 % le relief).
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <p>Fiche réalisée par <strong>Angel (Notion AI)</strong> · BAC HGGSP 2026 · Bonne chance Nozai ! 🎯</p>
+  <p style="margin-top:6px; font-size:.75rem;">Sources : Kartable — Introduction : une frontière · Frontières internes et externes de l'UE · Les frontières en débat · Tracer des frontières, approche géopolitique</p>
+</footer>
+
+</body>
+</html>
